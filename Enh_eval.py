@@ -5,7 +5,7 @@ from dataset import *
 from torch.utils.data import DataLoader
 from utils.dir_utils import mkdir, get_last_path
 from utils.model_utils import load_checkpoint
-from model.URSCT_model import URSCT
+from model.model import UNetCrossViT
 from tqdm import tqdm
 from utils.image_utils import torchPSNR, torchSSIM
 import torchvision.transforms.functional as TF
@@ -51,7 +51,7 @@ if __name__ == '__main__':
     parser.add_argument('--mode', type=str, default='infer', choices=['infer', 'eval'], help='random seed')
     mode = parser.parse_args().mode
 
-    with open('../configs/Enh_opt.yaml', 'r') as config:
+    with open('Enh_opt.yaml', 'r') as config:
         opt = yaml.safe_load(config)
         opt_test = opt['TEST']
     device = opt_test['DEVICE']
@@ -59,7 +59,7 @@ if __name__ == '__main__':
     result_dir = os.path.join(opt_test['SAVE_DIR'], opt['TRAINING']['MODEL_NAME'], 'test_results')
     mkdir(result_dir)
 
-    model = URSCT(model_detail_opt).to(device)
+    model = UNetCrossViT(model_detail_opt).to(device)
     path_chk_rest = get_last_path(os.path.join(opt_test['SAVE_DIR'], opt['TRAINING']['MODEL_NAME'], 'models'), '_bestSSIM.pth')
     load_checkpoint(model, path_chk_rest)
     model.eval()
