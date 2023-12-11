@@ -36,13 +36,13 @@ TRAINING:
   RESUME: False
   TRAIN_PS: [256, 256]
   VAL_PS: [256, 256]
-  TRAIN_DIR: '../dataset/demo_data_Enh/train_data' # path to training dataset
-  VAL_DIR: '../dataset/demo_data_Enh/val_data' # path to validation dataset
-  SAVE_DIR: '../exps/'   # path to save models and images
+  TRAIN_DIR: 'dataset/demo_data_Enh/train_data' # path to training dataset
+  VAL_DIR: 'dataset/demo_data_Enh/val_data' # path to validation dataset
+  SAVE_DIR: 'exps/'   # path to save models and images
 
 TEST:
   DEVICE: 'cuda:0'
   NUM_WORKS: 0
-  SAVE_DIR: '../exps/'
+  SAVE_DIR: 'exps/'
   TEST_PS: [256, 256]
-  TEST_DIR: '../dataset/demo_data_Enh/test_data' # path to validation dataset
+  TEST_DIR: 'dataset/demo_data_Enh/test_data' # path to validation dataset
