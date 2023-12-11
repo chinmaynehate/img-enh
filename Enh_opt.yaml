@@ -23,14 +23,14 @@ MODEL_DETAIL:
 # Optimization arguments.
 OPTIM:
   BATCH: 2
-  EPOCHS: 800
+  EPOCHS: 12
   LR_INITIAL: 5e-4
   LR_MIN: 1e-6
   BETA1: 0.9
 
 TRAINING:
   MODEL_NAME: 'quickstart_Enh'
-  VAL_INTERVAL: 100
+  VAL_INTERVAL: 10
   RANDOM_SPLIT: False
   NUM_WORKS: 0
   RESUME: False
