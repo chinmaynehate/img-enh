@@ -16,7 +16,7 @@ from dataset.data_loader import get_validation_data, get_training_data
 from warmup_scheduler import GradualWarmupScheduler
 from tqdm import tqdm
 from tensorboardX import SummaryWriter
-from model.URSCT_model import CrossViTBlock
+from model.model import UNetCrossViT
 from pytorch_msssim import MS_SSIM
 from loss.Gradient_Loss import Gradient_Loss
 from loss.Charbonnier_Loss import L1_Charbonnier_loss as Charbonnier_Loss
@@ -44,7 +44,7 @@ def main(opt):
 
     ## Build Model
     print('================= Building Model =================')
-    model = URSCT(model_detail_opt).cuda()
+    model = UNetCrossViT(model_detail_opt).cuda()
 
     ## GPU
     gpus = ','.join([str(i) for i in opt['GPU']])
@@ -247,6 +247,6 @@ def main(opt):
 if __name__ == '__main__':
     ## Load yaml configuration file
     print('================= Loading Configuration =================')
-    with open('../configs/Enh_opt.yaml', 'r') as config:
+    with open('Enh_opt.yaml', 'r') as config:
         opt = yaml.safe_load(config)
     main(opt)
